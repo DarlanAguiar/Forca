@@ -8,15 +8,13 @@ ganhou.src = "./audio/ganhou.mp3"
 const perdeu = new Audio();
 perdeu.src = "./audio/perdeu.mp3"
 
-
-
-const palavras = ["JOGADOR", "PESSOA", "MOTOCICLETA", "RESPOSTA"]
+const palavras = ["MACACO", "PEIXE", "TIGRE", "RAPOSA", "URSO", "PAPAGAIO", "CAPIVARA", "SUCURI", "ARANHA", "ARIRANHA", "CACHORRO", "GATO", "COBRA", "FORMIGA", "TATU"]
 var numImagem = 2
 var contador;
 var array;
+var itemSorteado;
 var digitadas = []
 var letrasQueForamClicadas = []
-
 
 function iniciar(){
 
@@ -31,6 +29,9 @@ function iniciar(){
     contador = 0
     digitadas = []
 
+    const resposta = document.querySelector("[data-resposta]")
+    resposta.style.display = "none"
+
     let foto = document.querySelector("[data-foto]");
     foto.innerHTML = `<img src="img/fig1.png" alt="">`
 
@@ -39,6 +40,7 @@ function iniciar(){
 
     const numero = Math.floor(Math.random()*palavras.length);
     const palavraSelecionada = palavras[numero];
+    itemSorteado = palavraSelecionada;
 
     array = palavraSelecionada.split("")
     console.log(array)
@@ -65,8 +67,12 @@ function conferePerdeu(numero){
     if(numero == 8){
 
         perdeu.play()
-        let jogadorPerdeu = document.querySelector("[data-perdeu]")
+        const jogadorPerdeu = document.querySelector("[data-perdeu]")
         jogadorPerdeu.style.display = "block"
+
+        const resposta = document.querySelector("[data-resposta]")
+        resposta.innerText =  `${itemSorteado}`
+        resposta.style.display = "block"
     
     } 
 
@@ -88,9 +94,6 @@ function confereLetra(letra){
     digitadas.push(letra)
 
     mudaCorDeFundo(letra)
-   
-
-    
 
     let entrou = false
 
