@@ -28,13 +28,13 @@ function iniciar(){
     for(let i = 0;i < array.length; i++){
         
         sorteada.innerHTML += (`<div id="${i}">_</div>`)
-        console.log(sorteada)
+        
 
     }
 }
 
 function confereGanhou(numero){
-    if(numero == array.length){
+    if(numero >= array.length){
         let ganhou = document.querySelector("[data-ganhou]")
         ganhou.style.display = "block"
     
@@ -50,7 +50,17 @@ function conferePerdeu(numero){
 
 }
 
+let digitadas = []
+
 function confereLetra(letra){
+    
+    if(digitadas.includes(letra)){
+        return
+    }
+    digitadas.push(letra)
+    console.log("entrou")
+
+    
 
     let entrou = false
 
@@ -59,7 +69,7 @@ function confereLetra(letra){
         if(array[i] == letra){
             var troca = document.getElementById(`${i}`)            
             troca.innerText = `${letra}`
-            console.log(i)
+        
             entrou = true
             contador += 1
         }
