@@ -8,7 +8,9 @@ ganhou.src = "./audio/ganhou.mp3"
 const perdeu = new Audio();
 perdeu.src = "./audio/perdeu.mp3"
 
-const palavras = ["MACACO", "PEIXE", "TIGRE", "RAPOSA", "URSO", "PAPAGAIO", "CAPIVARA", "SUCURI", "ARANHA", "ARIRANHA", "CACHORRO", "GATO", "COBRA", "FORMIGA", "TATU"]
+const palavras = ["MACACO", "PEIXE", "TIGRE", "RAPOSA", "URSO", "PAPAGAIO", "CAPIVARA", "SUCURI", "ARANHA", "CACHORRO", "GATO", "COBRA", "FORMIGA", "TATU", "ARARA", "MARITACA", "LAGARTO", "GOLFINHO","MORCEGO", "TARTARUGA", "JABUTI", "VEADO", "BOI", "VACA", "CABRITO", "BEZERRO", "LONTRA", "JAGUATIRICA", "RATO", "LOBO", "PATO", "GANSO", "SAPO"]
+
+
 var numImagem = 2
 var contador;
 var array;
