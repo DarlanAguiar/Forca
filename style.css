@@ -14,6 +14,7 @@ body{
     
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 1.5rem;
     position: absolute;
     left: 2%;
     top: 2%;
@@ -22,6 +23,7 @@ body{
     border-radius: 5px;
     color: white;
     text-shadow: 0 0 1px red;
+    
 }
 
 
@@ -43,6 +45,8 @@ body{
 
 
 .alfabeto{
+    max-width: 500px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -64,4 +68,51 @@ body{
 
 .alfabeto > div:hover{
     background-color: cornsilk;
+}
+
+.perdeu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background: radial-gradient(rgba(0, 0, 0, 0.898), transparent);
+    border-radius: 20px;
+    color: white;
+    text-shadow: 0 0 1px red;
+    border: 2px solid;
+    display: none;
+}
+.reiniciar{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+    background: radial-gradient(rgb(0, 0, 0), transparent);
+    border-radius: 10px;
+    color: white;
+    text-shadow: 0 0 1px red;
+    
+
+}
+
+.ganhou{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background: radial-gradient(rgba(0, 0, 0, 0.898), transparent);
+    border-radius: 20px;
+    color: white;
+    text-shadow: 0 0 1px red;
+    border: 2px solid;
+    display: none;
 }
