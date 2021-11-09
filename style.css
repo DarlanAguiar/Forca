@@ -90,12 +90,14 @@ body{
 
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 1.3rem;
+    padding: 13px;
+    width: 100%;
     background: radial-gradient(rgb(0, 0, 0), transparent);
     border-radius: 10px;
     color: white;
     text-shadow: 0 0 1px red;
+    
     
 
 }
