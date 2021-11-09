@@ -8,6 +8,8 @@ ganhou.src = "./audio/ganhou.mp3"
 const perdeu = new Audio();
 perdeu.src = "./audio/perdeu.mp3"
 
+
+
 const palavras = ["MACACO", "PEIXE", "TIGRE", "RAPOSA", "URSO", "PAPAGAIO", "CAPIVARA", "SUCURI", "ARANHA", "CACHORRO", "GATO", "COBRA", "FORMIGA", "TATU", "ARARA", "MARITACA", "LAGARTO", "GOLFINHO","MORCEGO", "TARTARUGA", "JABUTI", "VEADO", "BOI", "VACA", "CABRITO", "BEZERRO", "LONTRA", "JAGUATIRICA", "RATO", "LOBO", "PATO", "GANSO", "SAPO"]
 
 
@@ -130,32 +132,6 @@ function confereLetra(letra){
 }
 
 iniciar()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
