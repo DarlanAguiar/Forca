@@ -10,9 +10,7 @@ perdeu.src = "./audio/perdeu.mp3"
 
 
 
-const palavras = ["MACACO", "PEIXE", "TIGRE", "RAPOSA", "URSO", "PAPAGAIO", "CAPIVARA", "SUCURI", "ARANHA", "CACHORRO", "GATO", "COBRA", "FORMIGA", "TATU", "ARARA", "MARITACA", "LAGARTO", "GOLFINHO","MORCEGO", "TARTARUGA", "JABUTI", "VEADO", "BOI", "VACA", "CABRITO", "BEZERRO", "LONTRA", "JAGUATIRICA", "RATO", "LOBO", "PATO", "GANSO", "SAPO", "BORBOLETA", "MARIPOSA", "ANDORINHA", "CAMELO", "FLAMINGO", "CODORNA", "CERVO", "URUBU", "BALEIA", "EMA", "ZEBRA", "PANDA", "CARAMUJO", "ELEFANTE", "ABELHA", "FOCA", "HIENA", "GORILA", "VESPA", "CAVALO", "TUCANO", "PERCEVEJO", "ANTA", "BODE", "BURRO", "BARATA", "AVESTRUZ", "CARANGUEJO", "COALA", "CORUJA", "COELHO", "CANGURU", "CAMUNDONGO", "CIGARRA", "CROCODILO", "CUPIM", "ESQUILO", "GAFANHOTO", "GALO", "GRILO", "GAIVOTA", "JAVALI", "JEGUE", "JIBOIA", "JOANINHA", "JUMENTO", "LAGOSTA", "LESMA", "LEBRE", "LAMBARI", "MAMUTE", "MOSCA", "MINHOCA", "MARIMBONDO", "MOSQUITO", "MARIPOSA", "ORANGOTANGO", "OSTRA", "OVELHA", "PARDAL", "PERU", "PANTERA", "PELICANO", "PIRANHA", "POLVO", "POMBO", "PORCO", "PULGA", "RINOCERONTE", "SERIEMA", "SERPENTE", "TOUPERA", "TOURO", "TUCANO"  ]
-
-
+var palavras;
 var numImagem = 2
 var contador;
 var array;
@@ -20,15 +18,7 @@ var itemSorteado;
 var digitadas = []
 var letrasQueForamClicadas = []
 
-function iniciar(){
-
-    for(letra of letrasQueForamClicadas){
-        document.getElementById(`${letra}`).style.background = "#6495ed"
-    }
-
-    let perdeu = document.querySelector("[data-perdeu]")
-    perdeu.style.display = "none"
-
+function zerarCampos(){
     numImagem = 2
     contador = 0
     digitadas = []
@@ -39,8 +29,20 @@ function iniciar(){
     let foto = document.querySelector("[data-foto]");
     foto.innerHTML = `<img src="img/fig1.png" alt="">`
 
+    let perdeu = document.querySelector("[data-perdeu]")
+    perdeu.style.display = "none"
+
     let ganhou = document.querySelector("[data-ganhou]")
     ganhou.style.display = "none"
+}
+
+function iniciar(){
+
+    for(letra of letrasQueForamClicadas){
+        document.getElementById(`${letra}`).style.background = "#6495ed"
+    }
+
+    zerarCampos()
 
     const numero = Math.floor(Math.random()*palavras.length);
     const palavraSelecionada = palavras[numero];
@@ -55,6 +57,15 @@ function iniciar(){
         
         sorteada.innerHTML += (`<div id="${i}">_</div>`)
     }
+}
+
+async function buscarLista(){
+    
+    const lista = await fetch("https://darlanaguiar.github.io/forca/animais.txt");
+    const listaFormatada = await lista.json();
+    palavras = listaFormatada
+
+    iniciar()
 }
 
 function confereGanhou(numero){
@@ -131,7 +142,7 @@ function confereLetra(letra){
 
 }
 
-iniciar()
+buscarLista()
 
 
 
