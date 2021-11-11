@@ -59,7 +59,8 @@ body{
     font-weight: bold;
     margin: 5px;
     padding: 7px 10px;
-    border-radius: 3px;
+    box-shadow: 3px 3px 3px ;
+    border-radius: 5px;
     border: 2px solid;
     font-size: 1.2rem;
 
