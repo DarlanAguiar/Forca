@@ -38,8 +38,10 @@ body{
 .letras > div{
     border-bottom: 2px solid;
     margin: auto 4px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: bold;
+    text-shadow: 0 0  4px white;
+
 }
 
 
@@ -144,9 +146,9 @@ body{
     font-size:1rem;
     font-weight: bolder;
     position: absolute;
-    left: 50%;
-    bottom: 2%;
-    transform: translate(-50%, -30%);
+    right: 1%;
+    top: 1%;
+    
     background-color: rgba(0, 0, 0, 0.213);
     border-radius: 6px;
     padding: 0 3px;
@@ -157,4 +159,5 @@ body{
 a{
     text-decoration: none;
     color: rgb(0, 0, 0);
+    font-size: 10px ;
 }

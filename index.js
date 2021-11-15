@@ -1,27 +1,25 @@
 
-const  acerto = new Audio();
-acerto.src = "./audio/acerto.mp3"
-const  errou = new Audio();
-errou.src = "./audio/erro.mp3"
-const ganhou = new Audio();
-ganhou.src = "./audio/ganhou.mp3"
-const perdeu = new Audio();
-perdeu.src = "./audio/perdeu.mp3"
-
-
+const  acerto = new Audio(src = "./audio/acerto.mp3");
+const  errou = new Audio(src = "./audio/erro.mp3");
+const ganhou = new Audio(src = "./audio/ganhou.mp3");
+const perdeu = new Audio(src = "./audio/perdeu.mp3");
 
 var palavras;
 var numImagem = 2
 var contador;
-var array;
+var arrayDeCaracteres;
 var itemSorteado;
 var digitadas = []
 var letrasQueForamClicadas = []
 
-function zerarCampos(){
+function reorganizarCampos(){
     numImagem = 2
     contador = 0
     digitadas = []
+
+    for(letra of letrasQueForamClicadas){
+        document.getElementById(`${letra}`).style.background = "#6495ed"
+    }
 
     const resposta = document.querySelector("[data-resposta]")
     resposta.style.display = "none"
@@ -38,22 +36,18 @@ function zerarCampos(){
 
 function iniciar(){
 
-    for(letra of letrasQueForamClicadas){
-        document.getElementById(`${letra}`).style.background = "#6495ed"
-    }
-
-    zerarCampos()
+    reorganizarCampos()
 
     const numero = Math.floor(Math.random()*palavras.length);
     const palavraSelecionada = palavras[numero];
     itemSorteado = palavraSelecionada;
 
-    array = palavraSelecionada.split("")
-    console.log(array)
-
+    arrayDeCaracteres = palavraSelecionada.split("")
+    
     var sorteada = document.querySelector("[data-letras]");
-    sorteada.innerHTML = (``)
-    for(let i = 0;i < array.length; i++){
+    sorteada.innerHTML = ``
+
+    for(let i = 0;i < arrayDeCaracteres.length; i++){
         
         sorteada.innerHTML += (`<div id="${i}">_</div>`)
     }
@@ -64,12 +58,10 @@ async function buscarLista(){
     const lista = await fetch("https://darlanaguiar.github.io/forca/animais.txt");
     const listaFormatada = await lista.json();
     palavras = listaFormatada
-
-    iniciar()
 }
 
 function confereGanhou(numero){
-    if(numero >= array.length){
+    if(numero >= arrayDeCaracteres.length){
         
         ganhou.play()
         let jogadorGanhou = document.querySelector("[data-ganhou]")
@@ -79,18 +71,17 @@ function confereGanhou(numero){
 }
 
 function conferePerdeu(numero){
-    if(numero == 8){
+    if(numero < 8){
+        return;
+    }
 
-        perdeu.play()
-        const jogadorPerdeu = document.querySelector("[data-perdeu]")
-        jogadorPerdeu.style.display = "block"
+    perdeu.play()
+    const jogadorPerdeu = document.querySelector("[data-perdeu]")
+    jogadorPerdeu.style.display = "block"
 
-        const resposta = document.querySelector("[data-resposta]")
-        resposta.innerText =  `${itemSorteado}`
-        resposta.style.display = "block"
-    
-    } 
-
+    const resposta = document.querySelector("[data-resposta]")
+    resposta.innerText =  `${itemSorteado}`
+    resposta.style.display = "block"
 }
 
 
@@ -110,21 +101,21 @@ function confereLetra(letra){
 
     mudaCorDeFundo(letra)
 
-    let entrou = false
+    let encontrouNovaLetra = false
 
-    for(let i = 0; i < array.length; i++){
+    for(let i = 0; i < arrayDeCaracteres.length; i++){
 
-        if(array[i] == letra){
+        if(arrayDeCaracteres[i] == letra){
             acerto.play()
             var troca = document.getElementById(`${i}`)            
             troca.innerText = `${letra}`
         
-            entrou = true
+            encontrouNovaLetra = true
             contador += 1
         }
     }
     
-    if(!entrou){
+    if(!encontrouNovaLetra){
 
         errou.play()
             
@@ -142,9 +133,13 @@ function confereLetra(letra){
 
 }
 
-buscarLista()
+async function main() {
+    await buscarLista();
+    iniciar();
+}
 
 
+main();
 
 
 
